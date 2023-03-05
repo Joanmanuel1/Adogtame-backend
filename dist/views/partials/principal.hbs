@@ -1,0 +1,369 @@
+<style>
+  body {
+    background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  }
+
+  @media (max-width: 620px) {
+    #card-animales {
+      width: 70% !important;
+    }
+
+    #filtrar-busqueda {
+      width: 30% !important;
+    }
+  }
+</style>
+
+
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="/"> <img
+          src="https://i.pinimg.com/474x/f6/4a/95/f64a95a42cd5240324e3713a7ecf1aa4.jpg" alt="" style="height: 45px;">
+        Adogtame </a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/user/signin" style="color: white;"><b>Inicio de Sesion </b>
+              <i class="fas fa-user"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/signup" style="color: white;"><b>Registrarse </b> <i
+                class="bi bi-person-circle"></i></a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="container-fluid" style=" margin-top: 20px;">
+    <div class="filtrar-busqueda" id="filtrar-busqueda" style="width: 15%; float:left; text-align: center;">
+      <form action="">
+        <ul class="list-group">
+          <Span class="p-3 mb-2 bg-info text-white"> <b> Mascotas</b> </Span>
+          <li class="list-group-item ">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Perros
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Gatos
+          </li>
+          <br>
+        </ul>
+        <ul class="list-group">
+          <Span class="p-3 mb-2 bg-info text-white"> <b> Edad</b> </Span>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            0 a 3 meses
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            3 meses a 1 año
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            1 año a 5 años
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            + de 5 años
+          </li>
+          <br>
+        </ul>
+        <ul class="list-group">
+          <label class="p-3 mb-2 bg-info text-white"> <b> Sexo</b> </label>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Macho
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Hembra
+          </li>
+          <br>
+        </ul>
+        <ul class="list-group">
+          <Span class="p-3 mb-2 bg-info text-white"> <b> Tamaño</b> </Span>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Pequeño
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Mediano
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Grande
+          </li>
+          <br>
+          <ul class="list-group">
+          <Span class="p-3 mb-2 bg-info text-white"> <b> Castrado</b> </Span>
+          <li class="list-group-item ">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Si
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            No
+          </li>
+          <br>
+        <ul class="list-group">
+          <Span class="p-3 mb-2 bg-info text-white"> <b> Vacunado</b> </Span>
+          <li class="list-group-item ">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            Si
+          </li>
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="checkbox" value="">
+            No
+          </li>
+          <br>
+        </ul>
+          <button class="btn btn-success" type="submit" style="margin-bottom: 10px;"> <b>Aplicar filtros</b> </button>
+      </form>
+    </div>
+
+    <div class="card-animales" id="card-animales" style=" width:80%; float:right">
+      <div class="card-group" style="margin-bottom: 20px;">
+        <div class="card" style="text-align: center; margin-left: 15px">
+          <img
+            src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/perro-infecciones.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Pipi</h3>
+            <button class="btn btn-outline-dark btn-block" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              style="font-size:20px;">
+              <i class="fas fa-info"> </i><b> Ver informacion </b> <i class="fas fa-chevron-circle-down"></i>
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p class="card-text"><b>Mascota: </b>Perro <br> <b>Raza:</b> Cruza <br> <b> Edad:</b> 6 meses <br> <b>Sexo:</b> Hembra <br>
+                  <b>Tamaño: </b> Mediano <br> <b>Peso:</b> 6kg <br><b>Castrado:</b> Si <br>
+                  <b>Vacunado:</b> No <br> <b>Localidad:</b> Lanus <br><b> Convive con otros animales:</b> Con perros
+                  <br> <small class="text-muted">Registrado: 10/02/2021</small>
+                </p>
+              </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"
+              style="font-size:20px;">
+              <i class="fas fa-images"> <b> Ver mas
+                  fotos</b> </i>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Pipo</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
+                      data-bs-interval="false">
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img
+                            src="data:image/jpeg;base64,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"
+                            class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                          <img
+                            src="data:image/jpeg;base64,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"
+                            class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="http://c.files.bbci.co.uk/48DD/production/_107435681_perro1.jpg"
+                            class="d-block w-100" alt="...">
+                        </div>
+                      </div>
+                      <button class="btn btn-info" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                        data-bs-slide="prev" style="margin-top: 8px;">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                      </button>
+                      <button class="btn btn-info" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                        data-bs-slide="next" style="margin-top: 5px;">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="text-align: center; margin-left: 10px;">
+          <img
+            src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/perro-infecciones.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Luna </h3>
+            <button class="btn btn-outline-dark btn-block" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              style="font-size:20px;">
+              <i class="fas fa-info"> </i><b> Ver informacion </b> <i class="fas fa-chevron-circle-down"></i>
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p class="card-text"> <b>Mascota: </b>Perro <br> <b>Raza:</b> Cruza <br> <b> Edad:</b> 6 meses <br> <b>Sexo:</b> Hembra <br>
+                  <b>Tamaño: </b> Mediano <br> <b>Peso:</b> 4kg <br><b>Castrado:</b> Si <br>
+                  <b>Vacunado:</b> No <br> <b>Localidad:</b> Lanus <br><b> Convive con otros animales:</b> Con perros
+                  <br> <small class="text-muted">Registrado: 10/02/2021</small>
+                </p>
+              </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"
+              style="font-size:20px;">
+              <i class="fas fa-images"> <b> Ver mas
+                  fotos</b> </i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card" style="text-align: center; margin-left: 10px;">
+          <img
+            src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/perro-infecciones.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Luna </h3>
+            <button class="btn btn-outline-dark btn-block" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              style="font-size:20px;">
+              <i class="fas fa-info"> </i><b> Ver informacion </b> <i class="fas fa-chevron-circle-down"></i>
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p class="card-text"><b>Mascota: </b>Perro <br> <b>Raza:</b> Cruza <br> <b> Edad:</b> 6 meses <br> <b>Sexo:</b> Hembra <br>
+                  <b>Tamaño: </b> Mediano <br> <b>Peso:</b> 4kg <br><b>Castrado:</b> Si <br>
+                  <b>Vacunado:</b> No <br> <b>Localidad:</b> Lanus <br><b> Convive con otros animales:</b> Con perros
+                  <br> <small class="text-muted">Registrado: 10/02/2021</small>
+                </p>
+              </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"
+              style="font-size:20px;">
+              <i class="fas fa-images"> <b> Ver mas
+                  fotos</b> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-group" style="margin-bottom: 20px;">
+        <div class="card" style="text-align: center; margin-left: 15px">
+          <img
+            src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/perro-infecciones.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Lobo</h3>
+            <button class="btn btn-outline-dark btn-block" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              style="font-size:20px;">
+              <i class="fas fa-info"> </i><b> Ver informacion </b> <i class="fas fa-chevron-circle-down"></i>
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p class="card-text"><b>Mascota: </b>Perro <br> <b>Raza:</b> Cruza <br> <b> Edad:</b> 6 meses <br> <b>Sexo:</b> Hembra <br>
+                  <b>Tamaño: </b> Mediano <br> <b>Peso:</b> 4kg <br><b>Castrado:</b> Si <br>
+                  <b>Vacunado:</b> No <br> <b>Localidad:</b> Lanus <br><b> Convive con otros animales:</b> Con perros
+                  <br> <small class="text-muted">Registrado: 10/02/2021</small>
+                </p>
+              </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"
+              style="font-size:20px;">
+              <i class="fas fa-images"> <b> Ver mas
+                  fotos</b> </i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card" style="text-align: center; margin-left: 10px">
+          <img
+            src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/perro-infecciones.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Lobo</h3>
+            <button class="btn btn-outline-dark btn-block" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              style="font-size:20px;">
+              <i class="fas fa-info"> </i><b> Ver informacion </b> <i class="fas fa-chevron-circle-down"></i>
+            </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p class="card-text"><b>Mascota: </b>Perro <br> <b>Raza:</b> Cruza <br> <b> Edad:</b> 6 meses <br> <b>Sexo:</b> Hembra <br>
+                  <b>Tamaño: </b> Mediano <br> <b>Peso:</b> 4kg <br><b>Castrado:</b> Si <br>
+                  <b>Vacunado:</b> No <br> <b>Localidad:</b> Lanus <br><b> Convive con otros animales:</b> Con perros
+                  <br> <small class="text-muted">Registrado: 10/02/2021</small>
+                </p>
+              </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"
+              style="font-size:20px;">
+              <i class="fas fa-images"> <b> Ver mas
+                  fotos</b> </i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card" style="text-align: center; margin-left: 10px; ">
+          <img
+            src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_curiosidad__small/public/articulos/perro-infecciones.jpg"
+            class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title">Lobo</h3>
+            <button class="btn btn-outline-dark btn-block" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+              style="font-size:20px;">
+              <i class="fas fa-info"> </i><b> Ver informacion </b> <i class="fas fa-chevron-circle-down"></i> </button>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                <p class="card-text"> <b>Mascota: </b>Perro <br> <b>Raza:</b> Cruza <br> <b> Edad:</b> 6 meses <br> <b>Sexo:</b> Hembra <br>
+                  <b>Tamaño: </b> Mediano <br> <b>Peso:</b> 4kg <br><b>Castrado:</b> Si <br>
+                  <b>Vacunado:</b> No <br> <b>Localidad:</b> Lanus <br><b> Convive con otros animales:</b> Con perros
+                  <br> <small class="text-muted">Registrado: 10/02/2021</small>
+                </p>
+              </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal"
+              style="font-size:20px;">
+              <i class="fas fa-images"> <b> Ver mas fotos</b> </i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer style="float: right; width:100%; text-align:center;" class="bg-light text-dark">
+  <p><b>Copyright © Adogtame </b></p>
+</footer>
