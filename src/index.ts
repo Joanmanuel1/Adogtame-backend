@@ -44,7 +44,9 @@ class Server{
         
         //Middlewares
         this.app.use(morgan('dev'));
-        this.app.use(cors()); //iniciamos cors
+        this.app.use(cors({
+			origin: 'https://adogtame-app.netlify.app'
+		}));		
         this.app.use(express.json()); //habilitamos el intercambio de objetos json entre aplicaciones
         this.app.use(express.urlencoded({extended:true}));//habilitamos para recibir datos a traves de formularios html.
 	
