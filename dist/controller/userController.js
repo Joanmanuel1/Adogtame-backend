@@ -19,7 +19,6 @@ class UserController {
     // Login
     signin(req, res) {
         console.log(req.body);
-        // res.send('Sign In!!!');
         res.render("partials/signinForm");
     }
     login(req, res) {
@@ -32,62 +31,41 @@ class UserController {
             console.log("Este es el result", result);
             if (!result) {
                 return res.status(404).json({ message: "Usuario no registrado" });
-                //req.flash('error_session', 'Usuario y/o Password Incorrectos');
-                //res.redirect("./signin");
             }
             else {
                 const confirmado = result.confirmado;
                 console.log('Servidor confirmado => ', confirmado);
-                if (confirmado == 0) {
-                    console.log('Usuario no confirmado');
-                    return res.status(404).json({ message: "Debes verificar tu cuenta primero para poder ingresar. Por favor, revisa tu e-mail" });
+                if (result.email == email && result.password == password) {
+                    const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
+                    console.log("Este es el id del usuario", result.id);
+                    req.session.user = result;
+                    req.session.auth = true;
+                    res.status(200).json({ message: result.id, token: token });
+                    return;
                 }
                 else {
-                    //res.send({ "Usuario no registrado Recibido": req.body }); El profe dejo esta linea pero no valida si el user es incorrecto
-                    if (result.email == email && result.password == password) {
-                        const token = jsonwebtoken_1.default.sign({ _id: result.id }, "secretKey");
-                        console.log("Este es el id del usuario", result.id);
-                        req.session.user = result;
-                        req.session.auth = true;
-                        res.status(200).json({ message: result.id, token: token });
-                        //res.redirect("./home");
-                        return;
-                    }
-                    else {
-                        //res.send({ "Usuario y/o contraseña incorrectos": req.body });
-                        //req.flash('error_session', 'Usuario y/o Password Incorrectos');
-                        //res.redirect("./error");
-                        return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
-                    }
+                    return res.status(403).json({ message: "Usuario y/o contraseña incorrectos" });
                 }
             }
         });
     }
     dToken(req, res) {
-        //const { token } = req.params;
         const token = req.body.token;
         console.log(token);
-        // const decoded = jwtDecode<JwtPayload>(token); //Returns with the JwtPayload type
-        // console.log(decoded);
         const decoded = jsonwebtoken_1.default.verify(token, "secretKey");
         var userId = decoded;
         console.log("Q onda, el usuario cual es", userId);
         console.log(decoded);
         return res.json({ user: decoded._id });
-        // return res.send({
-        //      user: (<any>decoded)._id
-        // });
     }
     // Registro Usuario
     signup(req, res) {
         console.log(req.body);
-        //res.send('Sign Up!!!');
         res.render("partials/signupForm");
     }
     // Registro Organizacion
     signupOrg(req, res) {
         console.log(req.body);
-        //res.send('Sign Up!!!');
         res.render("partials/signupOrgForm");
     }
     // Registro Animal

@@ -16,7 +16,7 @@ class UserModel {
     }
     config() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.db = yield promise_1.createPool({
+            this.db = yield (0, promise_1.createPool)({
                 host: 'bhqi9e3sbkhjfoo1ocal-mysql.services.clever-cloud.com',
                 user: 'uv39nl2amcuoleen',
                 password: 'u4659PLvZ5pJK292lLpa',
