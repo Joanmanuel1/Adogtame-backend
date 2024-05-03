@@ -619,20 +619,18 @@ class UserController {
     addUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const usuario = req.body;
-            const { nombre, email, nro_celular } = req.body;
             delete usuario.repassword;
             console.log(req.body);
-            try {
-                const emailExiste = yield userModel_1.default.buscarEmail(usuario.email);
-                console.log('emailExiste => ', emailExiste);
-                if (emailExiste) {
-                    console.log('dentro de emailExiste');
-                    return res.status(403).json({ message: 44 });
-                }
-            }
-            catch (error) {
-                return res.status(403).json({ message: 'Ha ocurrido un error' + error });
-            }
+            // try {
+            //     const emailExiste = await userModel.buscarEmail(usuario.email);
+            //     console.log('emailExiste => ', emailExiste);
+            //     if(emailExiste){
+            // 		console.log('dentro de emailExiste');
+            //         return res.status(403).json({message: 44});
+            //     }
+            // } catch (error) {
+            //     return res.status(403).json({message: 'Ha ocurrido un error'+error});
+            // }
             let user;
             try {
                 user = yield userModel_1.default.crear(usuario);
@@ -642,55 +640,57 @@ class UserController {
                 console.log('Error al crear usuario');
                 return res.status(403).json({ message: 'Error al intentar crear usuario' + error });
             }
-            try {
-                const transporter = nodemailer_1.default.createTransport({
-                    service: 'gmail',
-                    auth: {
-                        type: "OAuth2",
-                        user: "adogtamesa@gmail.com",
-                        clientId: "548268239241-t5g8ugpitk66mpa4bfkbkr9bl17g1rrf.apps.googleusercontent.com",
-                        clientSecret: "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",
-                        refreshToken: "1//04IBPVJJF2IvuCgYIARAAGAQSNwF-L9IrCVT-Yb6lhPFPMf8wVGw2dY2z16BLN5364yDGvq6Hbx1DFU98b2UbreGX5g3Uj9RbR9Q"
-                    }
-                });
-                const user = yield userModel_1.default.buscarEmail(usuario.email);
-                console.log('Servidor user => ', user);
-                const token = jsonwebtoken_1.default.sign({ _id: user.id }, "secretKey", {
-                    expiresIn: '1d',
-                });
-                console.log('token => ', token);
-                const url = `http://adogtameweb.herokuapp.com/usuarios/verificar/${token}`;
-                var contentHTML = `
-						<h1>Completa tu registro - Adogtame App</h1>
-						<h2>Hola ${nombre}!</h2>
-							
-						<p>Por favor haz click en el siguiente link, o copialo en la barra de direcciones de tu navegador
-						para completar el proceso de registro:</p>
-						<a href="${url}">${url}</a>
-						<img src="https://st2.depositphotos.com/1606449/7516/i/950/depositphotos_75163555-stock-photo-cats-and-dogs-hanging-paws.jpg"/>
-						<p><h3><b>Adogtame S.A.</b></h3><br/>
-						<b>Nuestro sitio web:</b> <a href="https://adogtameweb.herokuapp.com/">Adogtame Web</a><br/>
-						<b>Nuestras redes:</b> <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png" width="32" heigth="32"/>
-						<img src="https://images.vexels.com/media/users/3/223136/isolated/lists/984f500cf9de4519b02b354346eb72e0-facebook-icon-redes-sociales.png" width="32" height="32"/>
-						<img src="https://image.similarpng.com/very-thumbnail/2020/06/Logo-Twitter-icon-transparent-PNG.png" width="32" height="32"/><br/>
-						<b>Contacto:</b> adogtamesa@gmail.com - (54) 11 9999 5555
-						</p>
-					`;
-                const info = yield transporter.sendMail({
-                    from: "'Adogtame App' <adogtamesa@gmail.com>",
-                    to: email,
-                    subject: "Confirmacion de registro Adogtame App",
-                    html: contentHTML
-                });
-                console.log('Message sent, info => ', info);
-                console.log('token result => ', token);
-                return res.status(200).json({ message: user, token: token });
-                //return res.json({ message: 'User saved!!' });
-            }
-            catch (error) {
-                console.log('algo salio mal, error:', error);
-                return res.status(403).json({ message: 'Algo salio mal' });
-            }
+            // try {
+            //     const transporter = nodemailer.createTransport({
+            //         service: 'gmail',
+            //         auth: {
+            //             type: "OAuth2",
+            //             user: "adogtamesa@gmail.com",
+            //             clientId: "548268239241-t5g8ugpitk66mpa4bfkbkr9bl17g1rrf.apps.googleusercontent.com",
+            //             clientSecret: "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",
+            //             refreshToken: "1//04IBPVJJF2IvuCgYIARAAGAQSNwF-L9IrCVT-Yb6lhPFPMf8wVGw2dY2z16BLN5364yDGvq6Hbx1DFU98b2UbreGX5g3Uj9RbR9Q"
+            //         }
+            //     });
+            //     const user = await userModel.buscarEmail(usuario.email);
+            //     console.log('Servidor user => ', user);
+            //     const token: string = jwt.sign(
+            //         { _id: user.id },
+            //         "secretKey",
+            //         {
+            //             expiresIn: '1d',
+            //         }
+            //     );
+            // 	console.log('token => ', token);
+            //     const url = `http://adogtameweb.herokuapp.com/usuarios/verificar/${token}`;
+            //     var contentHTML = `
+            // 				<h1>Completa tu registro - Adogtame App</h1>
+            // 				<h2>Hola ${nombre}!</h2>
+            // 				<p>Por favor haz click en el siguiente link, o copialo en la barra de direcciones de tu navegador
+            // 				para completar el proceso de registro:</p>
+            // 				<a href="${url}">${url}</a>
+            // 				<img src="https://st2.depositphotos.com/1606449/7516/i/950/depositphotos_75163555-stock-photo-cats-and-dogs-hanging-paws.jpg"/>
+            // 				<p><h3><b>Adogtame S.A.</b></h3><br/>
+            // 				<b>Nuestro sitio web:</b> <a href="https://adogtameweb.herokuapp.com/">Adogtame Web</a><br/>
+            // 				<b>Nuestras redes:</b> <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png" width="32" heigth="32"/>
+            // 				<img src="https://images.vexels.com/media/users/3/223136/isolated/lists/984f500cf9de4519b02b354346eb72e0-facebook-icon-redes-sociales.png" width="32" height="32"/>
+            // 				<img src="https://image.similarpng.com/very-thumbnail/2020/06/Logo-Twitter-icon-transparent-PNG.png" width="32" height="32"/><br/>
+            // 				<b>Contacto:</b> adogtamesa@gmail.com - (54) 11 9999 5555
+            // 				</p>
+            // 			`;
+            //     const info = await transporter.sendMail({
+            //         from: "'Adogtame App' <adogtamesa@gmail.com>",
+            //         to: email,
+            //         subject: "Confirmacion de registro Adogtame App",
+            //         html: contentHTML
+            //     });
+            //     console.log('Message sent, info => ', info);
+            //     console.log('token result => ', token);
+            //     return res.status(200).json({ message: user, token: token });
+            //     //return res.json({ message: 'User saved!!' });
+            // } catch (error) {
+            // 	console.log('algo salio mal, error:', error);
+            //     return res.status(403).json({ message: 'Algo salio mal' });
+            // }
         });
     }
     recoverPassword(req, res) {

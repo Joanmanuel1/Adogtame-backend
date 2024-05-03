@@ -17,10 +17,10 @@ class UserModel {
     config() {
         return __awaiter(this, void 0, void 0, function* () {
             this.db = yield promise_1.createPool({
-                host: 'blto8v3zcreb9b7rgewp-mysql.services.clever-cloud.com',
-                user: 'utjng23uz82553tn',
-                password: 'IWsnwR20lAPraZ0aAicI',
-                database: 'blto8v3zcreb9b7rgewp',
+                host: 'bhqi9e3sbkhjfoo1ocal-mysql.services.clever-cloud.com',
+                user: 'uv39nl2amcuoleen',
+                password: 'u4659PLvZ5pJK292lLpa',
+                database: 'bhqi9e3sbkhjfoo1ocal',
                 connectionLimit: 10
             });
         });

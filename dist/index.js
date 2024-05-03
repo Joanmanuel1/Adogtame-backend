@@ -33,7 +33,12 @@ class Server {
         this.app.set('view engine', '.hbs'); //ejecutamos el modulo definido
         //Middlewares
         this.app.use(morgan_1.default('dev'));
-        this.app.use(cors_1.default()); //iniciamos cors
+        // this.app.use(cors({
+        // 	origin: 'https://adogtame-app.netlify.app'
+        // }));		
+        this.app.use(cors_1.default({
+            origin: 'http://localhost:4200'
+        }));
         this.app.use(express_1.default.json()); //habilitamos el intercambio de objetos json entre aplicaciones
         this.app.use(express_1.default.urlencoded({ extended: true })); //habilitamos para recibir datos a traves de formularios html.
         //configuracion del middeware de sesion
